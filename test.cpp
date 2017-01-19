@@ -1,39 +1,40 @@
-#include <stdio.h>
-#include <string.h>
-using namespace std;
-int main()
-{
-	int i,l,T,exit;
+    #include<iostream>
+    #include<cmath>
+    #include<string>
+    #include<set>
+    #include<map>
+    #include<sstream>
+    #include<cstring>
 
-	char str[1000];
-	char ch;
+    using namespace std;
 
-	scanf("%d",&T);
+    int main()
+    {
+    	long long n,temp;
+    	long long i,j;
+    	long long array[20000];
 
-	while( (T-- ) ){
+    	while(cin>>n){
 
+    		if(n==0) break;
 
-		gets(str);
-		getchar();
-		scanf("%c",&ch);
+    		for(i=0; i<n; i++){
+    			cin>>array[i];
 
-		l = strlen(str);
+    		}
+    		for(i=0; i<n-1; i++){
+    			for(j=0; j<n-i-1; j++){
+    				if(array[j]>array[j+1]){
+    					temp=array[j];
+    					array[j]=array[j+1];
+    					array[j+1]=temp;
+    				}
+    			}
+    		}
+    		for(i=0; i<n; i++){
+    			cout<<array[i]<<endl;
+    		}
+    	}
 
-		exit = 0;
-
-		for( i = 0; i < l; i++ ){
-
-			if( str[i] == ch )
-				exit++;
-		}
-
-		if(!(exit))
-			printf(" %c is not present\n",ch);
-		else
-			printf("Occurrence of %c  in 'hello world' = %d\n",ch,exit);
-
-	}
-
-	return 0;
-
-}
+    return 0;
+    }
